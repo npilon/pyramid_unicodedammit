@@ -3,6 +3,20 @@ import sys, os
 
 version = '0.0.1'
 
+install_requires = [
+    'pyramid>=1.2dev',
+    'beautifulsoup4>=4.5.0',
+]
+
+tests_require = [
+    'webtest>=2.0.21',
+]
+
+testing_extras = tests_require + [
+    'nose==1.3.7',
+    'coverage',
+]
+
 setup(name='pyramid_unicodedammit',
       version=version,
       description="Make a best effort to deal with bizarre query strings",
@@ -17,9 +31,9 @@ setup(name='pyramid_unicodedammit',
       packages=find_packages(exclude=['ez_setup', 'examples', 'tests']),
       include_package_data=True,
       zip_safe=True,
-      install_requires=[
-          # -*- Extra requirements: -*-
-          'pyramid>=1.2dev',
-          'beautifulsoup4>=4.5.0',
-          ],
+      install_requires=install_requires,
+      extras_require={
+          'testing': testing_extras,
+      },
+      tests_require=tests_require,
       )
